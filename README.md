@@ -39,7 +39,20 @@ $ ninja -f static.ninja
 #### timer.new()
 Create a instance of timer.
 
+Return a timer instance.
 
+#### timer:sleep(time)
+Sleep this coroutine `time` milliseconds. This coroutine will be resume after `time` milliseconds.
 
+### Module tcp
+#### tcp.new()
+Create a tcp socket instance to be server or client
+
+Return a tcp socket instance.
+
+#### tcp:bind(address,port)
+Bind this socket in `address:port`
+
+#### tcp:listen()
 
 
