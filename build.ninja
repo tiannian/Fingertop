@@ -10,14 +10,12 @@ rule so
 rule link
     command = gcc -o $out $in $link_flag
 
-build build/luax.o: cc src/luax.c
-build build/lib/luax.o: cc src/lib/luax.c
-build build/lib/test.o: cc src/lib/test.c
+build build/ftop.o: cc src/ftop.c
+build build/lib/ftop.o: cc src/lib/ftop.c
 build build/lib/timer.o: cc src/lib/timer.c
 
-build build/luax.so: so build/lib/luax.o
-build build/test.so: so build/lib/test.o
+build build/ftop.so: so build/lib/ftop.o
 build build/timer.so: so build/lib/timer.o
 
-build build/luax: link build/luax.o
+build build/ftop: link build/ftop.o
 

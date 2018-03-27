@@ -3,7 +3,7 @@
 #include "lauxlib.h"
 #include "uv.h"
 
-#define TIMER_MOD_TYPE "luax_timer_t"
+#define TIMER_MOD_TYPE "ftop_timer_t"
 
 static int timer_close(lua_State *L) {
     uv_timer_t *timer = (uv_timer_t *)luaL_checkudata(L,1,TIMER_MOD_TYPE);
