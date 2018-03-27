@@ -1,0 +1,23 @@
+link_flag = -luv -llua
+
+rule cc
+    depfile = $out.d
+    command = gcc -g -MMD -MF $out.d -fPIC -o $out -c $in -I./ -std=gnu99
+
+rule so
+    command = gcc -shared -o $out $in $link_flag
+
+rule link
+    command = gcc -o $out $in $link_flag
+
+build build/luax.o: cc src/luax.c
+build build/lib/luax.o: cc src/lib/luax.c
+build build/lib/test.o: cc src/lib/test.c
+build build/lib/timer.o: cc src/lib/timer.c
+
+build build/luax.so: so build/lib/luax.o
+build build/test.so: so build/lib/test.o
+build build/timer.so: so build/lib/timer.o
+
+build build/luax: link build/luax.o
+
