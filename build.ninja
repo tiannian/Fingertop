@@ -2,7 +2,7 @@ link_flag = -luv -llua
 
 rule cc
     depfile = $out.d
-    command = gcc -g -MMD -MF $out.d -fPIC -o $out -c $in -I./ -std=gnu99
+    command = gcc -g -MMD -MF $out.d -fPIC -o $out -c $in -I./ -I./lib/lua53 -std=gnu99
 
 rule so
     command = gcc -shared -o $out $in $link_flag
@@ -13,9 +13,11 @@ rule link
 build build/ftop.o: cc src/ftop.c
 build build/lib/ftop.o: cc src/lib/ftop.c
 build build/lib/timer.o: cc src/lib/timer.c
+build build/lib/test.o: cc src/lib/test.c
 
 build build/ftop.so: so build/lib/ftop.o
 build build/timer.so: so build/lib/timer.o
+build build/test.so: so build/lib/test.o
 
 build build/ftop: link build/ftop.o
 
